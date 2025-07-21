@@ -1,3 +1,8 @@
+/*
+This code is to find the square root a given number using Binary Search Approach
+
+*/
+
 #include<iostream>
 #include<algorithm>
 #include<vector>

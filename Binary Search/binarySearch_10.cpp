@@ -24,7 +24,7 @@ class binary {
             if(nums[low] == nums[mid] && nums[mid] == nums[high]){
                 low ++;
                 high --;
-                continue;
+                continue;   
             }
             // Identify the which side is sorted 
 

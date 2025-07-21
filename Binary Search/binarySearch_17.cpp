@@ -43,7 +43,7 @@ class  binary{
 };
 
 int main() {
-    vector<int> nums={3,4,7,11};
+    vector<int> nums={3,6,7,11};
     binary obj;
   
     cout<<"The speed at which banana can be eaten is "<<  obj.search(nums, 8);
