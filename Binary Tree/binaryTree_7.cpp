@@ -1,42 +1,59 @@
 /*
     Inorder traversal(iterative approach)
-        using stack:    
+        using stack:
 */
 
-#include<iostream>
-#include<vector>
-#include<stack>
+#include <iostream>
+#include <vector>
+#include <stack>
 
 using namespace std;
 
-struct TreeNode{
-    int data ;
-    TreeNode* left;
-    TreeNode* right;
-    TreeNode(int val){
+struct TreeNode
+{
+    int data;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int val)
+    {
         data = val;
         left = right = nullptr;
     }
 };
 
-vector<int> preorderTraversal(TreeNode* root){
+vector<int> preorderTraversal(TreeNode *root)
+{
 
-    stack<TreeNode*> st;
+    stack<TreeNode *> st;
     vector<int> preorder;
+    if (root == nullptr)
+        return preorder;
+
 
     st.push(root);
-    while(!st.empty()){
+    while (!st.empty())
+    {
+        root = st.top();
+        preorder.push_back(root->data);
+        st.pop();
 
+        if (root->right != nullptr)
+        {
+            st.push(root->right);
+        }
+        if (root->left != nullptr)
+        {
+            st.push(root->left);
+        }
     }
 
     return preorder;
 }
 
+int main()
+{
 
-
-int main(){
-
-    TreeNode* root = new TreeNode(1);
+    TreeNode *root = new TreeNode(1);
     root->left = new TreeNode(2);
     root->right = new TreeNode(3);
 
@@ -49,9 +66,10 @@ int main(){
     root->right->right->right = new TreeNode(9);
 
     vector<int> order = preorderTraversal(root);
-    for(int i : order){
-        cout<<i<<" ";
+    for (int i : order)
+    {
+        cout << i << " ";
     }
 
-return (0);
+    return (0);
 }

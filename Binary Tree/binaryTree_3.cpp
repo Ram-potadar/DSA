@@ -17,10 +17,10 @@ Node* find(int val, Node* node){
 
     if(node == nullptr) return nullptr;
     if(node->data == val) return node;
-    cout<<"\nCalling left  child of "<<node->data;
+    // cout<<"\nCalling left  child of "<<node->data;
     Node* leftresult = find(val, node->left);
     if(leftresult) return leftresult;
-    cout<<"\nCalling right child of "<<node->data;
+    // cout<<"\nCalling right child of "<<node->data;
     return find(val, node->right);
 
 }
@@ -32,6 +32,9 @@ int main(){
     root->right = new Node(3);
 
     root->left->left = new Node(4);
+
+    // cout<<(root->left->left)<<endl;
+
     root->left->right = new Node(5);
     root->left->right->left = new Node(8);
 
@@ -39,9 +42,9 @@ int main(){
     root->right->right = new Node(7);
     root->right->right->right = new Node(9);
 
-    cout<<"Node found at node: ";
-
+    
     Node* found = find(4, root);
+    cout<<"Node found at node: "<<found;
     cout<<"\nData at node is: "<<found->data;
     return (0);
 }

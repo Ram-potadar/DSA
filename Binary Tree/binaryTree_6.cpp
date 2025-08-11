@@ -18,6 +18,7 @@ struct TreeNode{
         left = right = nullptr;
     }
 };
+
 vector<int> inorderTraversal(TreeNode* root){
 
         vector<int> inorder;
@@ -41,6 +42,7 @@ vector<int> inorderTraversal(TreeNode* root){
         return inorder;
 
     }
+
 int main(){
 
     TreeNode* root = new TreeNode(1);
@@ -59,6 +61,5 @@ int main(){
     for(int i : order){
         cout<<i<<" ";
     }
-
 return (0);
 }
