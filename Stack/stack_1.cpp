@@ -27,8 +27,12 @@ class Stack{
         return st[top];
     }
     int pop(){
-        if(top == -1) cout<<"Opps Stack is empty....\n";
-        top = top - 1;
+        if (top >= 0) {
+            return st[top--];  // return top element
+        } else {
+            cout << "Stack Underflow" << endl;
+            return -1; // Return a default/error value
+        }
     }
     int size(){
         return top + 1;
@@ -45,9 +49,7 @@ int main(){
     stk.push(11);
     stk.pop();
     stk.pop();
-    stk.pop();
-    stk.pop();
-    cout<<"Top: "<<stk.Top();
+    cout<<"Top: "<<stk.Top()<<endl;
     
 
 

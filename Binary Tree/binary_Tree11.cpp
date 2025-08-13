@@ -1,14 +1,14 @@
 /*
 
     Maximum depth of tree-->
-    
+        - Recursive 
+        - Level order traversal
     
 */
 
 #include<iostream>
-#include<algorithm>
-#include<vector>
-#include<stack>
+
+#include<queue>
 
 using namespace std;
 
@@ -25,14 +25,37 @@ struct TreeNode
 };
 
 
-int maxDepth(TreeNode* root){
+int maxDepthRecursive(TreeNode* root){
 
     if (root == nullptr) return 0;
 
-    int lh = maxDepth(root->left);
-    int rh = maxDepth(root->right);
+    int lh = maxDepthRecursive(root->left);
+    int rh = maxDepthRecursive(root->right);
 
     return 1+max(lh, rh);
+}
+
+int maxDepthLevlOrder(TreeNode* root){
+    queue<TreeNode*> q;
+    int depth = 0;
+    if (!root) return 0;
+    q.push(root);
+
+    while(!q.empty()){
+
+        int levelSize = q.size();
+        for(int i = 0; i < levelSize; i ++){
+            TreeNode* currentNode = q.front();
+            q.pop();
+
+            if(currentNode->left) q.push(currentNode->left);
+            if(currentNode->right) q.push(currentNode->right);
+        }
+        depth++;
+    }
+
+    return depth;
+
 }
 
 int main(){
@@ -49,7 +72,8 @@ int main(){
     root->right->right = new TreeNode(7);
     root->right->right->right = new TreeNode(9);
 
-    cout<<maxDepth(root);
+    cout<<maxDepthRecursive(root)<<endl;
+    cout<<maxDepthLevlOrder(root);
 
 return (0);
 }
