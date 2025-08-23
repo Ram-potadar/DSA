@@ -30,9 +30,7 @@ int main() {
     */
 
     cout<<"Data at root node "<<root->data<<endl;
-
     cout<<"data at root->left "<<root->left->data<<endl;
-
     cout<<"data at root->left->left "<<root->left->left->data<<endl;
 
     return 0;

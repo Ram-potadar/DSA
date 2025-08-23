@@ -1,13 +1,12 @@
 /*
-    It checks weather the tree is balanced binary tree or not
+    Calculating the Diameter of the tree-->>
+
 
 */
 
 #include<iostream>
 #include<algorithm>
 #include<vector>
-#include<stack>
-
 using namespace std;
 
 struct TreeNode
@@ -22,23 +21,18 @@ struct TreeNode
     }
 };
 
-
-int heightBalanced(TreeNode* root) {
+int maxi = 0;
+int diameterOfTree(TreeNode* root) {
     if(root == nullptr) return 0;
 
-    int l = heightBalanced(root->left);
-    int r = heightBalanced(root->right);
-    if(l == -1 || r == - 1) return -1;
-    if(abs(l - r ) > 1) return -1;
+    int l = diameterOfTree(root->left);
+    int r = diameterOfTree(root->right);
+    maxi = max(maxi, l+r);
 
     return 1 + max(l, r);
 }
 
-bool isBalanced(TreeNode* root){
-    if(heightBalanced(root) != -1) return true;
-    else return false;
-}
-
+  
 int main(){
 
     TreeNode *root = new TreeNode(1);
@@ -49,11 +43,11 @@ int main(){
     root->left->right = new TreeNode(5);
     root->left->right->left = new TreeNode(8);
 
-    // root->right->left = new TreeNode(6);
-    // root->right->right = new TreeNode(7);
-    // root->right->right->right = new TreeNode(9);
+    root->right->left = new TreeNode(6);
+    root->right->right = new TreeNode(7);
+    root->right->right->right = new TreeNode(9);
 
-    cout<<isBalanced(root);
+    cout<<diameterOfTree(root);
 
-return 0;
+return (0);
 }
