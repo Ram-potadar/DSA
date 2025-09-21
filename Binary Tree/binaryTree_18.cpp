@@ -48,7 +48,7 @@ class Solution{
                     todo.push({node->right, {x+1, y+1}});
                 }
             }
-            vector<vector<int>> ans;
+            vector<vector<int>> ans;    
             for(auto p: nodes){
                 vector<int> col;
                 for(auto q: p.second){
