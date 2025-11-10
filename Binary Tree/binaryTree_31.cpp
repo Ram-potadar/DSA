@@ -1,6 +1,5 @@
 /*
     Construct the binary tree using inorder and preorder
-
 */
 
 
