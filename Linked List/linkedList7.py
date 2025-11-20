@@ -37,7 +37,31 @@ class Solution:
 
         return head
     
-    def addAfter(self, x, head):
+    def addBefore(self, x, tar, head):
+
+        if not head:
+            return None
+
+        if head.data == tar:
+            temp = Node(x, head)
+            head.back = temp
+            return temp
+        
+
+        else:
+            node = head
+
+            while node:
+                if node.data == tar:
+                    temp = Node(x, node)
+                    node.back.next = temp
+                    temp.back = node.back
+                    node.back = temp
+                
+                    return head
+                node = node.next
+            return None
+
 
         
     
@@ -59,6 +83,10 @@ if __name__ == "__main__":
     # print(new_head.data)
 
     # Adding at tail
-    new_head = obj.addTail(5, head)
-    print(head.next.next.next.back.data)
+    # new_head = obj.addTail(5, head)
+    # print(head.next.next.next.back.data)
+
+    # Add at value
+    new_head = obj.addBefore(5, 5, head)
+    print(new_head.next.data)
 
